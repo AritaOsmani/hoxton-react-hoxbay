@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import ProductDetails from "../components/ProductDetails";
 
-function ProductDetailsPage() {
+function ProductDetailsPage(props) {
     const params = useParams()
     const [product, setProduct] = useState(null);
 
@@ -19,7 +19,7 @@ function ProductDetailsPage() {
         return <main>Product not found!</main>
     }
     return <main>
-        <ProductDetails product={product} />
+        <ProductDetails product={product} basket={props.basket} setBasket={props.setBasket} />
     </main >
 }
 export default ProductDetailsPage

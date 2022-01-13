@@ -1,4 +1,11 @@
+import { Link } from "react-router-dom";
+
 function ProductDetails(props) {
+    function addProductToBasket(product) {
+        const newBasket = JSON.parse(JSON.stringify(props.basket));
+        newBasket.push(product);
+        props.setBasket(newBasket)
+    }
     return <section className="product-detail main-wrapper">
         <img
             src={props.product.image}
@@ -14,7 +21,10 @@ function ProductDetails(props) {
             </p>
             <p>£{props.product.price}</p>
             {/* <!-- Once you click in this button, the user should be redirected to the Basket page --> */}
-            <button>Add to basket</button>
+            <Link to='/basket'><button onClick={function () {
+                addProductToBasket(props.product);
+            }}>Add to basket</button></Link>
+
         </div>
     </section>
 }
