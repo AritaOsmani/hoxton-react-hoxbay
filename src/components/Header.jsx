@@ -21,11 +21,13 @@ function Header() {
               Home
             </li>
           </Link>
+          <Link to='/categories'>
+            <li>
 
-          <li>
-            {/* Create here a link to this page */}
-            Categories
-          </li>
+              Categories
+            </li>
+          </Link>
+
           <li>
             {/* Create here a link to this page */}
             Basket

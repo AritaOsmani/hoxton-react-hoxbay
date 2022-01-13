@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
+import Categories from "./pages/Categories";
+import CategoryProduct from "./pages/CategoryProduct";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Products from "./pages/Products";
 
@@ -15,13 +17,15 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Products products={products} /> */}
+
       <main>
         {
           //Create your routes here
           <Routes>
             <Route path='/products' element={<Products products={products} />} />
             <Route path='/products/:id' element={<ProductDetailsPage />} />
+            <Route path='/categories' element={<Categories />} />
+            <Route path='/categories/:id' element={<CategoryProduct products={products} />} />
           </Routes>
         }
       </main>
