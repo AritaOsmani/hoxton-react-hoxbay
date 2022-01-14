@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 import BasketItem from "../components/BasketItem"
 
 function Basket(props) {
@@ -17,13 +18,16 @@ function Basket(props) {
         <h2>Your Basket</h2>
         <ul>
             {props.basket.map(basketItem =>
-                <BasketItem
-                    key={basketItem.id}
-                    basketItem={basketItem}
-                    basket={props.basket}
-                    setBasket={props.setBasket}
-                    updateQuantityOfProduct={props.updateQuantityOfProduct}
-                />)}
+                <Link to={`/products/${basketItem.id}`} >
+                    <BasketItem
+                        key={basketItem.id}
+                        basketItem={basketItem}
+                        basket={props.basket}
+                        setBasket={props.setBasket}
+                        updateQuantityOfProduct={props.updateQuantityOfProduct}
+                    />
+                </Link>
+            )}
 
             {/* <!--  --> */}
         </ul>
