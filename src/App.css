@@ -90,8 +90,12 @@ img {
 
 .header__nav {
   margin-left: 3rem;
+  
 }
-
+/* .header__nav ul{
+  display: grid;
+  grid-template-columns: repeat(3,150px) 200px;
+} */
 .header__nav li {
   display: inline-block;
   margin-left: 1rem;
@@ -103,6 +107,17 @@ img {
   text-decoration: underline;
 }
 
+
+.search-element input{
+  border:none;
+   outline: none;
+   height:2rem;
+   background-color: unset;
+   border-bottom: solid 1px #B2EA70;
+   margin-left:425px;
+   width: 300px;
+   padding:10px;
+ }
 /* Products Container */
 
 

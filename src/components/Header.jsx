@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link, Navigate, useNavigate } from "react-router-dom";
 
 const randColour = () =>
   ["green", "red", "blue", "yellow"][Math.floor(Math.random() * 4)];
 
-function Header() {
+function Header(props) {
+  let navigate = useNavigate();
   return (
     <header
       className="header"
@@ -33,7 +34,16 @@ function Header() {
               Basket
             </li>
           </Link>
+          <li className="search-element">
+            <form onSubmit={event => {
+              event.preventDefault();
+              navigate(`/products/product/${event.target.search.value}`)
+              event.target.reset()
+            }} action="">
+              <input name='search' type="text" placeholder="Search for a product..." />
+            </form>
 
+          </li>
         </ul>
       </nav>
     </header>

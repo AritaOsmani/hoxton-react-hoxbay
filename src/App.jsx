@@ -7,11 +7,13 @@ import CategoryProduct from "./pages/CategoryProduct";
 import NotFound from "./pages/NotFound";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Products from "./pages/Products";
+import SearchedProducts from "./pages/SearchedProducts";
 
 
 function App() {
   const [products, setProducts] = useState([])
   const [basket, setBasket] = useState([])
+  const [search, setSearch] = useState('')
 
   function updateQuantityOfProduct(product, amount) {
     const newBasket = JSON.parse(JSON.stringify(basket));
@@ -24,9 +26,10 @@ function App() {
     fetch('http://localhost:3000/products').then(res => res.json()).then(productFromServer => setProducts(productFromServer))
   }
   useEffect(getProductsFromServer, [])
+
   return (
     <>
-      <Header />
+      <Header setSearch={setSearch} />
 
       <main>
         {
@@ -39,6 +42,7 @@ function App() {
             <Route path='/categories/:id' element={<CategoryProduct products={products} />} />
             <Route path='/basket' element={<Basket basket={basket} setBasket={setBasket} updateQuantityOfProduct={updateQuantityOfProduct} />} />
             <Route path='*' element={<NotFound />} />
+            <Route path='/products/product/:title' element={<SearchedProducts products={products} />} />
           </Routes>
         }
       </main>
