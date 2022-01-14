@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Basket from "./pages/Basket";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
+import NotFound from "./pages/NotFound";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import Products from "./pages/Products";
 
@@ -31,11 +32,13 @@ function App() {
         {
           //Create your routes here
           <Routes>
+            <Route index element={<Navigate replace to='/products' />} />
             <Route path='/products' element={<Products products={products} />} />
             <Route path='/products/:id' element={<ProductDetailsPage basket={basket} setBasket={setBasket} updateQuantityOfProduct={updateQuantityOfProduct} />} />
             <Route path='/categories' element={<Categories />} />
             <Route path='/categories/:id' element={<CategoryProduct products={products} />} />
             <Route path='/basket' element={<Basket basket={basket} setBasket={setBasket} updateQuantityOfProduct={updateQuantityOfProduct} />} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         }
       </main>

@@ -1,0 +1,6 @@
+.not-found-container{
+    display: grid;
+    place-items: center;
+    height: 50vh;
+    width: 100vw;
+}
