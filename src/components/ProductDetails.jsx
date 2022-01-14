@@ -1,19 +1,31 @@
 import { Link } from "react-router-dom";
 
 function ProductDetails(props) {
+
     function addProductToBasket(product) {
         const newBasket = JSON.parse(JSON.stringify(props.basket));
-        newBasket.push(product);
-        props.setBasket(newBasket)
+        const foundElement = newBasket.find(prod => prod.id === product.id)
+
+
+        if (foundElement) {
+            props.updateQuantityOfProduct(product, foundElement.quantity + 1)
+        } else {
+            const itemToAdd = { ...product, quantity: 1 }
+            newBasket.push(itemToAdd);
+            props.setBasket(newBasket)
+        }
+
+
     }
+
     return <section className="product-detail main-wrapper">
         <img
             src={props.product.image}
             alt={props.product.title}
         />
         {/* style={{ ["--border-colour"]: `var(--${randColour()})` }} */}
-        {/* style={{ ['border- color']: 'var(--yellow)' }} */}
-        <div className="product-detail__side" >
+
+        <div className="product-detail__side" style={{ borderColor: 'var(--yellow)' }} >
             {/* <h3></h3> */}
             <h2>{props.product.title}</h2>
             <p>

@@ -13,7 +13,7 @@ function Categories() {
         <section className="categories-container main-wrapper">
             <ul className="categories-container__list">
 
-                {categories.map(category => <Category category={category} />)}
+                {categories.map(category => <Category key={category.id} category={category} />)}
 
 
             </ul>

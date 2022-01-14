@@ -9,7 +9,7 @@ function CategoryProduct(props) {
 
     return <section className="products-container main-wrapper">
         <ul className="products-container__list">
-            {categoryProduct.map(product => <ProductItem product={product} />)}
+            {categoryProduct.map(product => <ProductItem key={product.id} product={product} />)}
         </ul>
     </section>
 }

@@ -19,7 +19,7 @@ function ProductDetailsPage(props) {
         return <main>Product not found!</main>
     }
     return <main>
-        <ProductDetails product={product} basket={props.basket} setBasket={props.setBasket} />
+        <ProductDetails product={product} basket={props.basket} setBasket={props.setBasket} updateQuantityOfProduct={props.updateQuantityOfProduct} />
     </main >
 }
 export default ProductDetailsPage

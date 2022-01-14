@@ -12,6 +12,13 @@ function App() {
   const [products, setProducts] = useState([])
   const [basket, setBasket] = useState([])
 
+  function updateQuantityOfProduct(product, amount) {
+    const newBasket = JSON.parse(JSON.stringify(basket));
+    const match = newBasket.find(prod => prod.id === product.id)
+    match.quantity = amount;
+    setBasket(newBasket)
+  }
+
   function getProductsFromServer() {
     fetch('http://localhost:3000/products').then(res => res.json()).then(productFromServer => setProducts(productFromServer))
   }
@@ -25,10 +32,10 @@ function App() {
           //Create your routes here
           <Routes>
             <Route path='/products' element={<Products products={products} />} />
-            <Route path='/products/:id' element={<ProductDetailsPage basket={basket} setBasket={setBasket} />} />
+            <Route path='/products/:id' element={<ProductDetailsPage basket={basket} setBasket={setBasket} updateQuantityOfProduct={updateQuantityOfProduct} />} />
             <Route path='/categories' element={<Categories />} />
             <Route path='/categories/:id' element={<CategoryProduct products={products} />} />
-            <Route path='/basket' element={<Basket basket={basket} setBasket={setBasket} />} />
+            <Route path='/basket' element={<Basket basket={basket} setBasket={setBasket} updateQuantityOfProduct={updateQuantityOfProduct} />} />
           </Routes>
         }
       </main>

@@ -4,7 +4,11 @@ function Products(props) {
     return <main>
         <section className="products-container main-wrapper">
             <ul className="products-container__list">
-                {props.products.map(product => <ProductItem product={product} />)}
+                {props.products.map(product =>
+                    <ProductItem
+                        product={product}
+                        key={product.id}
+                    />)}
 
 
                 {/* <!-- More items here --> */}

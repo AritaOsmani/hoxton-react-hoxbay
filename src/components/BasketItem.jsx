@@ -2,7 +2,7 @@ import { useState } from "react/cjs/react.development";
 
 function BasketItem(props) {
 
-    const [totalOfBaksetItem, setTotalOfBasketItem] = useState(getTotalOfBasketItem(props.basketItem, 1))
+
 
     function removeProductFromBasket(product) {
         let newBasket = JSON.parse(JSON.stringify(props.basket))
@@ -10,9 +10,9 @@ function BasketItem(props) {
         props.setBasket(newBasket)
     }
 
-    function getTotalOfBasketItem(basketItem, quantity) {
+    function getTotalOfBasketItem(basketItem) {
 
-        let total = quantity * basketItem.price;
+        let total = basketItem.quantity * basketItem.price;
         return total
 
     }
@@ -33,26 +33,28 @@ function BasketItem(props) {
             <p>{props.basketItem.title}</p>
             <p>
                 Qty:
-                <select onChange={function (e) {
+                <select defaultValue={props.basketItem.quantity}
 
-                    if (Number(e.target.value) === 0) {
-                        removeProductFromBasket(props.basketItem)
-                    }
-                    let total = getTotalOfBasketItem(props.basketItem, Number(e.target.value))
-                    // addTotalOfBasketItemToFinalTotal(total)
-                    console.log('Total inside', total)
-                    setTotalOfBasketItem(total)
-                }}
+                    onChange={function (e) {
+
+                        if (Number(e.target.value) === 0) {
+                            removeProductFromBasket(props.basketItem)
+                        } else {
+                            props.updateQuantityOfProduct(props.basketItem, Number(e.target.value))
+                        }
+
+
+                    }}
 
                 ><option value="0">0</option
-                ><option selected value="1">1</option
+                ><option value="1">1</option
                 ><option value="2">2</option
                 ><option value="3">3</option></select
                 >
             </p>
             {/* <!-- The item total is calculated using the Qty selected value --> */}
             {/* {console.log('Total: ', total)} */}
-            <p>Item total: £{totalOfBaksetItem}</p>
+            <p>Item total: £{getTotalOfBasketItem(props.basketItem)}</p>
         </article>
     </li>
 }
