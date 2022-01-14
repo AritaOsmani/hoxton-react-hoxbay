@@ -164,6 +164,8 @@ img {
 .categories-container {
   height: 100%;
   margin: 0 auto;
+  
+  
 }
 
 .categories-container__list {
@@ -171,10 +173,24 @@ img {
   height: 100%;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-gap: 2rem;
-  
+  margin-top:150px;
 }
+
 .categories-container__list li{
-  background-color: royalblue;
+  /* background-color: royalblue; */
+
+}
+.category_1{
+  background-color: #5584AC;
+}
+.category_2{
+  background-color: #FF8E00;
+}
+.category_3{
+  background-color: #BD1616;
+}
+.category_4{
+  background-color: #4E9F3D;
 }
 
 .categories-container__list a {
