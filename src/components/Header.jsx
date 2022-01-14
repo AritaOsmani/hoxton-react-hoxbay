@@ -27,11 +27,13 @@ function Header() {
               Categories
             </li>
           </Link>
+          <Link to='/basket'>
+            <li>
+              {/* Create here a link to this page */}
+              Basket
+            </li>
+          </Link>
 
-          <li>
-            {/* Create here a link to this page */}
-            Basket
-          </li>
         </ul>
       </nav>
     </header>

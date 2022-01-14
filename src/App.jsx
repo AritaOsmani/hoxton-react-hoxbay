@@ -28,7 +28,7 @@ function App() {
             <Route path='/products/:id' element={<ProductDetailsPage basket={basket} setBasket={setBasket} />} />
             <Route path='/categories' element={<Categories />} />
             <Route path='/categories/:id' element={<CategoryProduct products={products} />} />
-            <Route path='/basket' element={<Basket basket={basket} />} />
+            <Route path='/basket' element={<Basket basket={basket} setBasket={setBasket} />} />
           </Routes>
         }
       </main>
